@@ -77,12 +77,11 @@ func draw(_ text: String, font: CTFont, color: CGColor, at origin: CGPoint, trac
 let inter = CTFontCreateWithName("HelveticaNeue-Bold" as CFString, 34, nil)
 draw("Nabo", font: inter, color: rgb(0x141413), at: CGPoint(x: 160, y: CGFloat(H) - 80 - 46), tracking: -0.5)
 
-// Headline in a serif, three lines; the middle line italic green
+// Headline in a serif, two lines; the second italic green
 let serif = CTFontCreateWithName("Georgia" as CFString, 86, nil)
 let serifItalic = CTFontCreateWithName("Georgia-Italic" as CFString, 86, nil)
-draw("Your building,", font: serif, color: rgb(0x141413), at: CGPoint(x: 76, y: 330), tracking: -2.5)
-draw("your neighbours.", font: serifItalic, color: rgb(0x1E6B5C), at: CGPoint(x: 76, y: 236), tracking: -2.5)
-draw("Nothing else.", font: serif, color: rgb(0x141413), at: CGPoint(x: 76, y: 142), tracking: -2.5)
+draw("Your building,", font: serif, color: rgb(0x141413), at: CGPoint(x: 76, y: 290), tracking: -2.5)
+draw("together.", font: serifItalic, color: rgb(0x1E6B5C), at: CGPoint(x: 76, y: 190), tracking: -2.5)
 
 // Footer line
 let small = CTFontCreateWithName("HelveticaNeue-Medium" as CFString, 24, nil)
