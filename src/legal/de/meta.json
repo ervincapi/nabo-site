@@ -1,0 +1,28 @@
+{
+  "lang_name": "Deutsch",
+  "nav_terms": "Nutzungsbedingungen",
+  "nav_privacy": "Datenschutz",
+  "nav_guidelines": "Community-Regeln",
+  "nav_dpa": "AVV",
+  "nav_subprocessors": "Unterauftragsverarbeiter",
+  "back": "← Zurück zu Nabo",
+  "languages": "Sprache",
+  "draft": "Entwurf zur rechtlichen Prüfung. Text in [eckigen Klammern] wird vor der Veröffentlichung ergänzt. Weicht eine Übersetzung von der englischen Fassung ab, ist die englische Fassung maßgeblich.",
+  "updated": "Zuletzt aktualisiert: 15. November 2026",
+  "contact": "Kontakt",
+  "rights": "Alle Rechte vorbehalten.",
+  "titles": {
+    "terms": "Nutzungsbedingungen",
+    "privacy": "Datenschutzerklärung",
+    "guidelines": "Community-Regeln",
+    "dpa": "Auftragsverarbeitungsvertrag",
+    "subprocessors": "Unterauftragsverarbeiter"
+  },
+  "descriptions": {
+    "terms": "Die Bedingungen für die Nutzung von Nabo, der privaten Community-App für ein einzelnes Wohnhaus.",
+    "privacy": "Wie Nabo mit personenbezogenen Daten umgeht: was wir erheben, warum, wo die Daten gespeichert werden, wie lange wir sie aufbewahren und welche Rechte Sie haben.",
+    "guidelines": "Die wenigen Regeln, die ein Nabo-Haus freundlich, nützlich und sicher halten.",
+    "dpa": "Der Vertrag zwischen dem Verantwortlichen eines Hauses und Nabo über die Verarbeitung personenbezogener Daten der Bewohnerinnen und Bewohner (Art. 28 DSGVO; albanisches Gesetz Nr. 124/2024 über den Schutz personenbezogener Daten).",
+    "subprocessors": "Die Unternehmen, die für Nabo personenbezogene Daten verarbeiten, wo sie das tun und auf welcher Rechtsgrundlage."
+  }
+}

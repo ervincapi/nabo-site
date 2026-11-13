@@ -1,0 +1,28 @@
+{
+  "lang_name": "Italiano",
+  "nav_terms": "Termini",
+  "nav_privacy": "Privacy",
+  "nav_guidelines": "Regole",
+  "nav_dpa": "DPA",
+  "nav_subprocessors": "Sub-responsabili",
+  "back": "← Torna a Nabo",
+  "languages": "Lingua",
+  "draft": "Bozza per la revisione legale. Il testo tra [parentesi quadre] viene completato prima della pubblicazione. Se una traduzione differisce dalla versione inglese, prevale la versione inglese.",
+  "updated": "Ultimo aggiornamento: 15 novembre 2026",
+  "contact": "Contatti",
+  "rights": "Tutti i diritti riservati.",
+  "titles": {
+    "terms": "Termini di servizio",
+    "privacy": "Informativa sulla privacy",
+    "guidelines": "Regole della community",
+    "dpa": "Accordo sul trattamento dei dati",
+    "subprocessors": "Sub-responsabili"
+  },
+  "descriptions": {
+    "terms": "I termini per l'uso di Nabo, l'app di community privata per un singolo edificio residenziale.",
+    "privacy": "Come Nabo tratta i dati personali: quali dati raccogliamo, perché, dove sono conservati, per quanto tempo li conserviamo e quali sono i tuoi diritti.",
+    "guidelines": "Le poche regole che rendono un edificio su Nabo cordiale, utile e sicuro.",
+    "dpa": "L'accordo tra il titolare del trattamento di un edificio e Nabo per il trattamento dei dati personali dei residenti, ai sensi dell'art. 28 del GDPR (Regolamento UE 2016/679) e della legge albanese n. 124/2024 sulla protezione dei dati personali.",
+    "subprocessors": "Le aziende che trattano dati personali per conto di Nabo, dove lo fanno e su quale base giuridica."
+  }
+}
