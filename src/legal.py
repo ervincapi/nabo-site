@@ -30,6 +30,7 @@ HEAD = """<!doctype html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
+<meta name="author" content="Ervin Capi">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>{title} · Nabo</title>
 <meta name="description" content="{description}">
@@ -79,6 +80,7 @@ FOOT = """
   <div class="wrap footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
     <span>© 2026 Nabo · {rights}</span>
     <span><a href="mailto:{contact}">{contact}</a></span>
+    <span>{made_by} <a href="https://www.linkedin.com/in/ervin-capi/" rel="author noopener" target="_blank">Ervin Capi</a></span>
   </div>
 </footer>
 <script src="{base}assets/site.js" defer></script>
@@ -154,7 +156,7 @@ def render(lang: str, slug: str, meta: dict, body: str) -> str:
 <h2>{meta['contact']}</h2>
 <p><a href="mailto:{CONTACT}">{CONTACT}</a></p>
 </div></section>"""
-    html += FOOT.format(base=base, rights=meta["rights"], contact=CONTACT)
+    html += FOOT.format(base=base, rights=meta["rights"], contact=CONTACT, made_by=meta["made_by"])
     return html
 
 
@@ -173,7 +175,7 @@ def not_found(meta: dict) -> str:
 <p class="lede" style="text-align:center">This page is not in the building. Try the entrance.</p>
 <a class="btn btn-primary" href="/">Back to Nabo</a>
 </div></section>"""
-    html += FOOT.format(base="", rights=meta["rights"], contact=CONTACT)
+    html += FOOT.format(base="", rights=meta["rights"], contact=CONTACT, made_by=meta["made_by"])
     return html
 
 
