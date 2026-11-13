@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["QYH65N88V4.com.eca.nabo.app"],
+        "components": [
+          { "/": "/auth/*", "comment": "Magic-link landing page: tap to open the app (spec magic-link-auth)" },
+          { "/": "/join/*", "comment": "Invite links that pre-fill the unit (spec resident-verification)" },
+          { "/": "/join", "?": { "code": "*" }, "comment": "Join-code links printed as QR on the building notice" },
+          { "/": "/e/*", "comment": "Shared event links (spec events-calendar)" },
+          { "/": "/legal/*", "exclude": true, "comment": "Legal pages always open in the browser" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["QYH65N88V4.com.eca.nabo.app"]
+  }
+}
