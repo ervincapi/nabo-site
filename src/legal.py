@@ -40,7 +40,7 @@ HEAD = """<!doctype html>
       <a href="{base}legal/guidelines.html">Guidelines</a>
     </nav>
     <div class="nav-right">
-      <a class="btn btn-ghost btn-sm" href="{base}">← Back to nabo.al</a>
+      <a class="btn btn-ghost btn-sm" href="{base}">← Back to Nabo</a>
     </div>
   </div>
 </header>
@@ -52,7 +52,7 @@ FOOT = """
 <footer class="footer">
   <div class="wrap footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
     <span>© 2026 Nabo · All rights reserved.</span>
-    <span><a href="mailto:hello@nabo.al">hello@nabo.al</a></span>
+    <span><a href="mailto:info@nabo-app.org">info@nabo-app.org</a></span>
   </div>
 </footer>
 <script src="{base}assets/site.js" defer></script>
@@ -84,7 +84,7 @@ PAGES = {
 <h2>Liability and law</h2>
 <p>Nabo is provided with reasonable care but without warranty of uninterrupted availability. To the extent permitted by law, liability is limited to the fees paid by the customer for the building in the preceding twelve months. Mandatory consumer rights in your country are not affected.</p>
 <h2>Contact</h2>
-<p>Questions about these terms: <a href="mailto:hello@nabo.al">hello@nabo.al</a>.</p>
+<p>Questions about these terms: <a href="mailto:info@nabo-app.org">info@nabo-app.org</a>.</p>
 """,
     ),
     "privacy": dict(
@@ -114,7 +114,7 @@ PAGES = {
 <h2>Age</h2>
 <p>Nabo is for people aged 16 and over.</p>
 <h2>Contact</h2>
-<p>Privacy questions and requests: <a href="mailto:hello@nabo.al">hello@nabo.al</a>.</p>
+<p>Privacy questions and requests: <a href="mailto:info@nabo-app.org">info@nabo-app.org</a>.</p>
 """,
     ),
     "guidelines": dict(
@@ -138,7 +138,7 @@ PAGES = {
 <h2>Managers and moderators</h2>
 <p>Managers and moderators follow the same rules and are held to a higher standard. They may pin, hide or remove content and deactivate memberships, and each action is logged.</p>
 <h2>Contact</h2>
-<p>Something urgent or sensitive? Write to <a href="mailto:hello@nabo.al">hello@nabo.al</a>.</p>
+<p>Something urgent or sensitive? Write to <a href="mailto:info@nabo-app.org">info@nabo-app.org</a>.</p>
 """,
     ),
 }
@@ -170,7 +170,7 @@ def not_found() -> str:
 <span class="eyebrow">404</span>
 <h1 class="display">Wrong <em>door.</em></h1>
 <p class="lede" style="text-align:center">This page is not in the building. Try the entrance.</p>
-<a class="btn btn-primary" href="/">Back to nabo.al</a>
+<a class="btn btn-primary" href="/">Back to Nabo</a>
 </div></section>"""
     html += FOOT.format(base=base)
     return html

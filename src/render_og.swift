@@ -85,7 +85,7 @@ draw("together.", font: serifItalic, color: rgb(0x1E6B5C), at: CGPoint(x: 76, y:
 
 // Footer line
 let small = CTFontCreateWithName("HelveticaNeue-Medium" as CFString, 24, nil)
-draw("A private community app for one apartment building  ·  nabo.al", font: small, color: rgb(0x5C5B57), at: CGPoint(x: 80, y: 70))
+draw("A private community app for one apartment building", font: small, color: rgb(0x5C5B57), at: CGPoint(x: 80, y: 70))
 
 // Language chips, bottom right
 let chipFont = CTFontCreateWithName("HelveticaNeue-Bold" as CFString, 16, nil)
