@@ -11,7 +11,8 @@ Live: https://ervincapi.github.io/nabo-site/ (GitHub Pages) · production domain
 | `src/template.html` | The one page, with `{{key}}` placeholders |
 | `i18n/<lang>.json` | Copy in `en`, `sq`, `fr`, `it`, `de`, `es` (same key set, checked at build) |
 | `build.py` | Renders `index.html` (English) and `<lang>/index.html`, plus `sitemap.xml` |
-| `src/legal.py` | Renders `legal/*.html` (terms, privacy, guidelines) and `404.html` |
+| `src/legal/<lang>/` | Legal texts: `meta.json` plus terms, privacy, guidelines, dpa, subprocessors (HTML bodies; English is the reference) |
+| `src/legal.py` | Renders `legal/<page>.html` (English) and `<lang>/legal/<page>.html`, checks every language has the English structure, and `404.html` |
 | `src/render_og.swift` | Renders `assets/og.png` (1200×630) for link previews |
 | `assets/` | `style.css`, `site.js`, icons (derived from the app icon), OG image |
 

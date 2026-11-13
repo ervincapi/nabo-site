@@ -1,0 +1,28 @@
+{
+  "lang_name": "English",
+  "nav_terms": "Terms",
+  "nav_privacy": "Privacy",
+  "nav_guidelines": "Guidelines",
+  "nav_dpa": "DPA",
+  "nav_subprocessors": "Sub-processors",
+  "back": "← Back to Nabo",
+  "languages": "Language",
+  "draft": "Draft for legal review. Text in [square brackets] is completed before publication. If a translation differs from the English version, the English version prevails.",
+  "updated": "Last updated 15 November 2026",
+  "contact": "Contact",
+  "rights": "All rights reserved.",
+  "titles": {
+    "terms": "Terms of service",
+    "privacy": "Privacy policy",
+    "guidelines": "Community guidelines",
+    "dpa": "Data processing agreement",
+    "subprocessors": "Sub-processors"
+  },
+  "descriptions": {
+    "terms": "The terms for using Nabo, the private community app for one apartment building.",
+    "privacy": "How Nabo handles personal data: what we collect, why, where it is stored, how long we keep it, and your rights.",
+    "guidelines": "The few rules that keep a Nabo building friendly, useful and safe.",
+    "dpa": "The agreement between a building's controller and Nabo for processing residents' personal data (Art. 28 GDPR; Albania Law 124/2024).",
+    "subprocessors": "The companies that process personal data for Nabo, where, and on what legal basis."
+  }
+}

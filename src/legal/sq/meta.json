@@ -1,0 +1,28 @@
+{
+  "lang_name": "Shqip",
+  "nav_terms": "Kushtet",
+  "nav_privacy": "Privatësia",
+  "nav_guidelines": "Rregullat",
+  "nav_dpa": "DPA",
+  "nav_subprocessors": "Nënpërpunuesit",
+  "back": "← Kthehuni te Nabo",
+  "languages": "Gjuha",
+  "draft": "Projekt për shqyrtim ligjor. Teksti në [kllapa katrore] plotësohet para publikimit. Nëse një përkthim ndryshon nga versioni në anglisht, mbizotëron versioni në anglisht.",
+  "updated": "Përditësimi i fundit: 15 nëntor 2026",
+  "contact": "Kontakti",
+  "rights": "Të gjitha të drejtat të rezervuara.",
+  "titles": {
+    "terms": "Kushtet e shërbimit",
+    "privacy": "Politika e privatësisë",
+    "guidelines": "Rregullat e komunitetit",
+    "dpa": "Marrëveshja e përpunimit të të dhënave",
+    "subprocessors": "Nënpërpunuesit"
+  },
+  "descriptions": {
+    "terms": "Kushtet për përdorimin e Nabo, aplikacionit privat të komunitetit për një pallat banimi.",
+    "privacy": "Si i trajton Nabo të dhënat personale: çfarë mbledhim, pse, ku ruhen, sa kohë i mbajmë dhe cilat janë të drejtat tuaja.",
+    "guidelines": "Pak rregulla që e mbajnë një pallat në Nabo miqësor, të dobishëm dhe të sigurt.",
+    "dpa": "Marrëveshja ndërmjet kontrolluesit të një pallati dhe Nabo për përpunimin e të dhënave personale të banorëve (neni 28 i RGPD-së; Ligji nr. 124/2024 «Për mbrojtjen e të dhënave personale» i Republikës së Shqipërisë).",
+    "subprocessors": "Kompanitë që përpunojnë të dhëna personale për Nabo, ku i përpunojnë dhe mbi çfarë baze ligjore."
+  }
+}

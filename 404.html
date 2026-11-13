@@ -9,12 +9,23 @@
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#F7F6F2" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1A17" media="(prefers-color-scheme: dark)">
+
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<style>
+.doc .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0 8px}
+.doc table{width:100%;border-collapse:collapse;font-size:15px}
+.doc th,.doc td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line, rgba(127,127,127,.25));color:var(--ink-2)}
+.doc thead th,.doc tbody th{font-weight:600}
+.doc tbody th{width:28%}
+.langs{display:flex;flex-wrap:wrap;gap:6px 14px;margin:-20px 0 28px;font-size:14px}
+.doc .langs a{text-decoration:none}
+.langs [aria-current]{font-weight:600}
+</style>
 <script>(function(){try{var t=localStorage.getItem('nabo-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 </head>
 <body>
@@ -25,9 +36,7 @@
       Nabo
     </a>
     <nav class="nav-links" aria-label="Legal">
-      <a href="legal/terms.html">Terms</a>
-      <a href="legal/privacy.html">Privacy</a>
-      <a href="legal/guidelines.html">Guidelines</a>
+
     </nav>
     <div class="nav-right">
       <a class="btn btn-ghost btn-sm" href="">← Back to Nabo</a>

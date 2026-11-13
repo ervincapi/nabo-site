@@ -87,7 +87,10 @@ def main() -> None:
         print(f"wrote {out.relative_to(ROOT)}")
 
     today = date.today().isoformat()
-    urls = [url_for(lang) for lang in LANGS] + [f"{SITE}/legal/{p}.html" for p in ("terms", "privacy", "guidelines")]
+    # Every legal page in every language (rendered by src/legal.py).
+    legal = [f"legal/{p}.html" if lang == DEFAULT else f"{lang}/legal/{p}.html"
+             for p in ("terms", "privacy", "guidelines", "dpa", "subprocessors") for lang in LANGS]
+    urls = [url_for(lang) for lang in LANGS] + [f"{SITE}/{path}" for path in legal]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
         sitemap.append(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>")
