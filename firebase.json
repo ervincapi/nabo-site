@@ -4,7 +4,11 @@
     "ignore": [
       "firebase.json",
       ".firebaserc",
-      "**/.*",
+      ".firebase/**",
+      ".git/**",
+      ".gitignore",
+      ".nojekyll",
+      "**/.DS_Store",
       "build.py",
       "README.md",
       "src/**",
@@ -13,8 +17,36 @@
     ],
     "headers": [
       {
+        "source": "/.well-known/apple-app-site-association",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
+      },
+      {
         "source": "/assets/**",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=604800"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/join/**",
+        "destination": "/join/index.html"
+      },
+      {
+        "source": "/e/**",
+        "destination": "/e/index.html"
       }
     ]
   }

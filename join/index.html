@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>Nabo</title>
+<!--
+  Fallback for /join/<token> (invite links) and /join?code=XXXX-XXXX (QR on the notice)
+  when the Universal Link does not open the app: desktop, Android, app not installed.
+  Serve this file for every path under /join (host rewrite rule). It consumes nothing.
+-->
+<style>
+  :root { --accent:#1E6B5C; --ink:#141413; --muted:#5C5B57; --surface:#F7F6F2; --card:#FFFFFF; --field:#F2F1EC; }
+  @media (prefers-color-scheme: dark) { :root { --accent:#5FB39F; --ink:#F2F1EC; --muted:#B4B2AA; --surface:#1C1B19; --card:#262523; --field:#2E2D2A; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--surface); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; }
+  main { max-width:480px; margin:0 auto; padding:48px 16px; }
+  .card { background:var(--card); border-radius:18px; padding:32px; }
+  .brand { color:var(--accent); font-weight:800; font-size:24px; margin:0 0 8px; }
+  h1 { font-size:22px; margin:8px 0 12px; }
+  p { margin:0 0 16px; color:var(--muted); }
+  .button { display:block; text-align:center; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; padding:16px 24px; border-radius:14px; margin:8px 0 20px; }
+  .code { background:var(--field); border-radius:14px; padding:14px 16px; font-size:28px; font-weight:700; letter-spacing:4px; text-align:center; font-family:"SF Mono",Menlo,Consolas,monospace; }
+  .store a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <p class="brand">Nabo</p>
+    <h1 id="title">Join your building</h1>
+    <p id="body">Open this link on your iPhone with Nabo installed, and the app takes it from here.</p>
+    <div id="codeBox" class="code" hidden></div>
+    <a id="open" class="button" href="#">Open Nabo</a>
+    <p id="store" class="store">Don't have Nabo yet? <a id="storeLink" href="/">Get it on the App Store</a></p>
+  </div>
+</main>
+<script>
+(function () {
+  var strings = {
+    en: { title: "Join your building", body: "Open this link on your iPhone with Nabo installed, and the app takes it from here.", code: "Or type this code in Nabo:", open: "Open Nabo", store: "Don't have Nabo yet?", storeLink: "Get it on the App Store" },
+    sq: { title: "Bashkohuni me pallatin tuaj", body: "Hapeni këtë lidhje në iPhone-in tuaj me Nabo-n të instaluar dhe aplikacioni vazhdon më tej.", code: "Ose shkruani këtë kod në Nabo:", open: "Hap Nabo-n", store: "Nuk e keni ende Nabo-n?", storeLink: "Merreni në App Store" },
+    fr: { title: "Rejoignez votre immeuble", body: "Ouvrez ce lien sur votre iPhone avec Nabo installé, et l'application prend le relais.", code: "Ou saisissez ce code dans Nabo :", open: "Ouvrir Nabo", store: "Vous n'avez pas encore Nabo ?", storeLink: "Télécharger sur l'App Store" },
+    it: { title: "Entra nel tuo palazzo", body: "Apri questo link sul tuo iPhone con Nabo installata e l'app farà il resto.", code: "Oppure inserisci questo codice in Nabo:", open: "Apri Nabo", store: "Non hai ancora Nabo?", storeLink: "Scaricala dall'App Store" },
+    de: { title: "Treten Sie Ihrem Haus bei", body: "Öffnen Sie diesen Link auf Ihrem iPhone mit installierter Nabo-App, der Rest passiert in der App.", code: "Oder geben Sie diesen Code in Nabo ein:", open: "Nabo öffnen", store: "Noch kein Nabo?", storeLink: "Im App Store laden" },
+    es: { title: "Únete a tu edificio", body: "Abre este enlace en tu iPhone con Nabo instalada y la app se encarga del resto.", code: "O escribe este código en Nabo:", open: "Abrir Nabo", store: "¿Aún no tienes Nabo?", storeLink: "Descárgala en el App Store" }
+  };
+  var nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+  var s = strings[nav] || strings.en;
+  document.documentElement.lang = strings[nav] ? nav : "en";
+  document.getElementById("title").textContent = s.title;
+  document.getElementById("body").textContent = s.body;
+  document.getElementById("open").textContent = s.open;
+  document.getElementById("store").firstChild.textContent = s.store + " ";
+  document.getElementById("storeLink").textContent = s.storeLink;
+
+  var params = new URLSearchParams(location.search);
+  var code = params.get("code");
+  var token = location.pathname.replace(/^\/join\/?/, "").split("/")[0];
+  var open = document.getElementById("open");
+  if (code && /^[A-Za-z0-9-]{8,9}$/.test(code)) {
+    var box = document.getElementById("codeBox");
+    box.hidden = false;
+    box.textContent = code.toUpperCase();
+    document.getElementById("body").textContent = s.body + " " + s.code;
+    open.href = "nabo://join?code=" + encodeURIComponent(code.toUpperCase());
+  } else if (/^[0-9a-fA-F]{16,64}$/.test(token)) {
+    open.href = "nabo://join/" + token.toLowerCase();
+  } else {
+    open.hidden = true;
+  }
+})();
+</script>
+</body>
+</html>

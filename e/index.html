@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>Nabo</title>
+<!--
+  Fallback for shared event links /e/<event id>?o=<occurrence id> (spec events-calendar)
+  when the Universal Link does not open the app. Events are private to building members,
+  so this page shows nothing about the event: it only hands the link to the app.
+  Serve this file for every path under /e (host rewrite rule).
+-->
+<style>
+  :root { --accent:#1E6B5C; --ink:#141413; --muted:#5C5B57; --surface:#F7F6F2; --card:#FFFFFF; --field:#F2F1EC; }
+  @media (prefers-color-scheme: dark) { :root { --accent:#5FB39F; --ink:#F2F1EC; --muted:#B4B2AA; --surface:#1C1B19; --card:#262523; --field:#2E2D2A; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--surface); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; }
+  main { max-width:480px; margin:0 auto; padding:48px 16px; }
+  .card { background:var(--card); border-radius:20px; padding:32px; }
+  .brand { color:var(--accent); font-weight:800; font-size:24px; margin:0 0 8px; }
+  .tile { width:54px; height:60px; border-radius:14px; background:var(--field); display:flex; align-items:center; justify-content:center; color:var(--accent); margin:8px 0 16px; }
+  h1 { font-size:22px; margin:0 0 12px; }
+  p { margin:0 0 16px; color:var(--muted); }
+  .button { display:block; text-align:center; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; padding:16px 24px; border-radius:16px; margin:8px 0 20px; }
+  .store a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <p class="brand">Nabo</p>
+    <div class="tile" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+    </div>
+    <h1 id="title">An event in your building</h1>
+    <p id="body">Events are only visible to residents of the building. Open this link on your iPhone with Nabo installed to see it.</p>
+    <a id="open" class="button" href="#">Open in Nabo</a>
+    <p id="store" class="store">Don't have Nabo yet? <a id="storeLink" href="/">Get it on the App Store</a></p>
+  </div>
+</main>
+<script>
+(function () {
+  var strings = {
+    en: { title: "An event in your building", body: "Events are only visible to residents of the building. Open this link on your iPhone with Nabo installed to see it.", open: "Open in Nabo", store: "Don't have Nabo yet?", storeLink: "Get it on the App Store" },
+    sq: { title: "Një ngjarje në pallatin tuaj", body: "Ngjarjet i shohin vetëm banorët e pallatit. Hapeni këtë lidhje në iPhone-in tuaj me Nabo-n të instaluar për ta parë.", open: "Hape në Nabo", store: "Nuk e keni ende Nabo-n?", storeLink: "Merreni në App Store" },
+    fr: { title: "Un événement dans votre immeuble", body: "Les événements ne sont visibles que par les résidents de l'immeuble. Ouvrez ce lien sur votre iPhone avec Nabo installé pour le voir.", open: "Ouvrir dans Nabo", store: "Vous n'avez pas encore Nabo ?", storeLink: "Télécharger sur l'App Store" },
+    it: { title: "Un evento nel tuo palazzo", body: "Gli eventi sono visibili solo ai residenti dell'edificio. Apri questo link sul tuo iPhone con Nabo installata per vederlo.", open: "Apri in Nabo", store: "Non hai ancora Nabo?", storeLink: "Scaricala dall'App Store" },
+    de: { title: "Eine Veranstaltung in Ihrem Haus", body: "Veranstaltungen sehen nur die Bewohner des Hauses. Öffnen Sie diesen Link auf Ihrem iPhone mit installierter Nabo-App.", open: "In Nabo öffnen", store: "Noch kein Nabo?", storeLink: "Im App Store laden" },
+    es: { title: "Un evento en tu edificio", body: "Los eventos solo los ven los vecinos del edificio. Abre este enlace en tu iPhone con Nabo instalada para verlo.", open: "Abrir en Nabo", store: "¿Aún no tienes Nabo?", storeLink: "Descárgala en el App Store" }
+  };
+  var nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+  var s = strings[nav] || strings.en;
+  document.documentElement.lang = strings[nav] ? nav : "en";
+  document.getElementById("title").textContent = s.title;
+  document.getElementById("body").textContent = s.body;
+  document.getElementById("open").textContent = s.open;
+  document.getElementById("store").firstChild.textContent = s.store + " ";
+  document.getElementById("storeLink").textContent = s.storeLink;
+
+  var uuid = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  var id = location.pathname.replace(/^\/e\/?/, "").split("/")[0];
+  var occurrence = new URLSearchParams(location.search).get("o");
+  var open = document.getElementById("open");
+  if (uuid.test(id)) {
+    open.href = "nabo://e/" + id.toLowerCase() + (occurrence && uuid.test(occurrence) ? "?o=" + occurrence.toLowerCase() : "");
+  } else {
+    open.hidden = true;
+  }
+})();
+</script>
+</body>
+</html>
