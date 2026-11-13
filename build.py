@@ -17,7 +17,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parent
-SITE = "https://nabo.al"
+SITE = "https://nabo-app.org"
 DEFAULT = "en"
 LANGS = ["en", "sq", "fr", "it", "de", "es"]
 NATIVE = {"en": "English", "sq": "Shqip", "fr": "Français", "it": "Italiano", "de": "Deutsch", "es": "Español"}
