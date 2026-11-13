@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light dark">
+<title>Nabo</title>
+<!--
+  Magic-link landing page (spec magic-link-auth, task 3.3).
+
+  The sign-in email links here with ?token_hash=…&type=magiclink&lang=xx.
+  * On an iPhone with Nabo installed the tap in the mail app opens the app
+    directly through the Universal Link (/auth/* in the AASA file) and this page
+    is never shown.
+  * Everywhere else (desktop, Android, app not installed, link scanners) this
+    page is shown. It consumes nothing: the token is only ever verified by the
+    app, so a scanner's GET cannot invalidate the link.
+  * The "Open Nabo" button uses the nabo:// scheme because Universal Links are
+    not honoured for links tapped on the same domain. The 6-digit code from the
+    email is the fallback that always works.
+-->
+<style>
+  :root { --accent:#1E6B5C; --ink:#141413; --muted:#5C5B57; --surface:#F7F6F2; --card:#FFFFFF; --field:#F2F1EC; }
+  @media (prefers-color-scheme: dark) {
+    :root { --accent:#5FB39F; --ink:#F2F1EC; --muted:#B4B2AA; --surface:#1C1B19; --card:#262523; --field:#2E2D2A; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--surface); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; }
+  main { max-width:480px; margin:0 auto; padding:48px 16px; }
+  .card { background:var(--card); border-radius:18px; padding:32px; }
+  .brand { color:var(--accent); font-weight:800; font-size:24px; margin:0 0 8px; }
+  h1 { font-size:22px; margin:8px 0 12px; }
+  p { margin:0 0 16px; color:var(--muted); }
+  .button { display:block; text-align:center; background:var(--accent); color:#fff; text-decoration:none; font-weight:600; padding:16px 24px; border-radius:14px; margin:8px 0 20px; }
+  .code { background:var(--field); border-radius:14px; padding:14px 16px; font-size:15px; }
+  .code strong { color:var(--ink); }
+  .store { font-size:14px; }
+  .store a { color:var(--accent); }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <p class="brand">Nabo</p>
+    <h1 id="title">Tap to continue</h1>
+    <p id="body">Tap the button to open Nabo and finish signing in on this device.</p>
+    <a id="open" class="button" href="#">Open Nabo</a>
+    <div class="code"><span id="codeHint">If the app doesn't open, type the <strong>6-digit code</strong> from the email into Nabo. The code works for 60 minutes.</span></div>
+    <p id="expired" class="hidden">This link is missing its sign-in token. Request a new link from the app.</p>
+    <p id="store" class="store" style="margin-top:20px;">Don't have Nabo yet? <a id="storeLink" href="https://apps.apple.com/app/id0000000000">Get it on the App Store</a></p>
+  </div>
+</main>
+<script>
+(function () {
+  var strings = {
+    en: { title: "Tap to continue", body: "Tap the button to open Nabo and finish signing in on this device.", open: "Open Nabo",
+          code: "If the app doesn't open, type the <strong>6-digit code</strong> from the email into Nabo. The code works for 60 minutes.",
+          expired: "This link is missing its sign-in token. Request a new link from the app.",
+          store: "Don't have Nabo yet?", storeLink: "Get it on the App Store" },
+    sq: { title: "Prekni për të vazhduar", body: "Prekni butonin për të hapur Nabo-n dhe për të përfunduar hyrjen në këtë pajisje.", open: "Hap Nabo-n",
+          code: "Nëse aplikacioni nuk hapet, shkruani në Nabo <strong>kodin 6-shifror</strong> nga emaili. Kodi vlen për 60 minuta.",
+          expired: "Kësaj lidhjeje i mungon kodi i hyrjes. Kërkoni një lidhje të re nga aplikacioni.",
+          store: "Nuk e keni ende Nabo-n?", storeLink: "Merreni në App Store" },
+    fr: { title: "Appuyez pour continuer", body: "Appuyez sur le bouton pour ouvrir Nabo et terminer la connexion sur cet appareil.", open: "Ouvrir Nabo",
+          code: "Si l'application ne s'ouvre pas, saisissez dans Nabo le <strong>code à 6 chiffres</strong> reçu par e-mail. Il est valable 60 minutes.",
+          expired: "Ce lien ne contient pas de jeton de connexion. Demandez un nouveau lien depuis l'application.",
+          store: "Vous n'avez pas encore Nabo ?", storeLink: "Télécharger sur l'App Store" },
+    it: { title: "Tocca per continuare", body: "Tocca il pulsante per aprire Nabo e completare l'accesso su questo dispositivo.", open: "Apri Nabo",
+          code: "Se l'app non si apre, inserisci in Nabo il <strong>codice a 6 cifre</strong> ricevuto via e-mail. Vale 60 minuti.",
+          expired: "Questo link non contiene il token di accesso. Richiedi un nuovo link dall'app.",
+          store: "Non hai ancora Nabo?", storeLink: "Scaricala dall'App Store" },
+    de: { title: "Tippen, um fortzufahren", body: "Tippen Sie auf die Schaltfläche, um Nabo zu öffnen und die Anmeldung auf diesem Gerät abzuschließen.", open: "Nabo öffnen",
+          code: "Falls sich die App nicht öffnet, geben Sie in Nabo den <strong>6-stelligen Code</strong> aus der E-Mail ein. Er gilt 60 Minuten.",
+          expired: "Diesem Link fehlt das Anmelde-Token. Fordern Sie in der App einen neuen Link an.",
+          store: "Noch kein Nabo?", storeLink: "Im App Store laden" },
+    es: { title: "Toca para continuar", body: "Toca el botón para abrir Nabo y terminar de iniciar sesión en este dispositivo.", open: "Abrir Nabo",
+          code: "Si la app no se abre, escribe en Nabo el <strong>código de 6 dígitos</strong> del correo. Vale 60 minutos.",
+          expired: "A este enlace le falta el token de acceso. Pide un enlace nuevo desde la app.",
+          store: "¿Aún no tienes Nabo?", storeLink: "Descárgala en el App Store" }
+  };
+  var params = new URLSearchParams(location.search);
+  var lang = params.get("lang");
+  if (!strings[lang]) {
+    var nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+    lang = strings[nav] ? nav : "en";
+  }
+  var s = strings[lang];
+  document.documentElement.lang = lang;
+  document.getElementById("title").textContent = s.title;
+  document.getElementById("body").textContent = s.body;
+  document.getElementById("open").textContent = s.open;
+  document.getElementById("codeHint").innerHTML = s.code;
+  document.getElementById("expired").textContent = s.expired;
+  document.getElementById("store").firstChild.textContent = s.store + " ";
+  document.getElementById("storeLink").textContent = s.storeLink;
+
+  var tokenHash = params.get("token_hash");
+  var type = params.get("type") || "magiclink";
+  var open = document.getElementById("open");
+  if (tokenHash && /^[A-Za-z0-9._~-]+$/.test(tokenHash)) {
+    // Same parameters, handed to the app through its URL scheme. The app calls
+    // verifyOTP(tokenHash:type:) and never needs this page again.
+    open.href = "nabo://auth/continue?token_hash=" + encodeURIComponent(tokenHash) +
+      "&type=" + encodeURIComponent(type) + "&lang=" + encodeURIComponent(lang);
+  } else {
+    open.classList.add("hidden");
+    document.getElementById("body").classList.add("hidden");
+    document.getElementById("expired").classList.remove("hidden");
+  }
+})();
+</script>
+</body>
+</html>
